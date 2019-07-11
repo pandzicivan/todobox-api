@@ -18,11 +18,10 @@ services:
       - PMA_PORT=3306
       - PMA_HOSTS=db
   node:
-    image: node:10.16.0
+    build: .
     container_name: todoer_node
-    working_dir: /home/source
     ports: 
       - "8080:8080"
     depends_on:
       - db
-
+    command: npm run local
