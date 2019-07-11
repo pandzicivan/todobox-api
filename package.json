@@ -1,0 +1,26 @@
+{
+  "name": "todo-api",
+  "version": "1.0.0",
+  "description": "Todoer API",
+  "main": "index.js",
+  "scripts": {
+    "start": "",
+    "local": "node_modules/.bin/nodemon index.js --exec 'npm run lint'",
+    "lint": "node_modules/.bin/eslint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ivan.pandzic1989@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.0.1",
+    "eslint-config-standard": "^13.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "nodemon": "^1.19.1"
+  }
+}
