@@ -7,6 +7,8 @@ services:
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=Lin08Uxs
+    networks:
+      - backend
   pma:
     image: phpmyadmin/phpmyadmin:latest
     container_name: todoer_pma
@@ -16,12 +18,20 @@ services:
       - PMA_USER=root
       - PMA_PASSWORD=Lin08Uxs
       - PMA_PORT=3306
-      - PMA_HOSTS=db
+      - PMA_HOST=db
+    networks:
+      - backend
   node:
     build: .
     container_name: todoer_node
     ports: 
-      - "8080:8080"
+      - "8001:8001"
     depends_on:
       - db
+    networks:
+      - backend
     command: npm run local
+
+networks:
+  backend:
+    driver: bridge
