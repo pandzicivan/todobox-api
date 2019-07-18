@@ -19,7 +19,9 @@ const executeMigration = async (file) => {
   const dbSettings = settings.db;
   const connection = await db.createConnection(dbSettings);
   try {
-    await connection.query(file.toString());
+    await connection.query(file.toString()).finally(async () => {
+      await connection.end();
+    });
   } catch (e) {
     console.log(e);
   }
