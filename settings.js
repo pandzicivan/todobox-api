@@ -7,7 +7,8 @@ const settings = {
     user: "root",
     password: "Lin08Uxs",
     connectTimeout: 3000,
-    host: "db"
+    host: "db",
+    multipleStatements: true
   }
 }
 

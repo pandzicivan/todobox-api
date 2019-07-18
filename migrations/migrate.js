@@ -18,8 +18,12 @@ const migrate = () => {
 const executeMigration = async (file) => {
   const dbSettings = settings.db;
   const connection = await db.createConnection(dbSettings);
-  const result = await connection.query(file.toString());
-  return result;
+  try {
+    await connection.query(file.toString());
+  } catch (e) {
+    console.log(e);
+  }
+  process.exit();
 };
 
 migrate();
