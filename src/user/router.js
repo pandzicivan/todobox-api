@@ -4,7 +4,7 @@ const router = express.Router({// eslint-disable-line new-cap
   mergeParams: true,
 });
 
-router.get('/', (req, res) => {
+router.post('/login', (req, res) => {
   res.sendStatus(200);
 });
 
