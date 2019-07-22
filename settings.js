@@ -9,6 +9,15 @@ const settings = {
     connectTimeout: 3000,
     host: "db",
     multipleStatements: true
+  },
+  cache: {
+    host: "redis",
+    port: 6379
+  },
+  user: {
+    sessions: {
+      secretKey : "forDevelopmentEnv"
+    }
   }
 }
 
