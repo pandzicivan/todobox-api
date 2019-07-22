@@ -33,6 +33,13 @@ services:
     networks:
       - backend
     command: npm run local
+  redis:
+    container_name: 'todoer_redis'
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    networks:
+      - backend
 
 networks:
   backend:
