@@ -16,7 +16,8 @@ const settings = {
   },
   user: {
     sessions: {
-      secretKey : "forDevelopmentEnv"
+      secretKey : "forDevelopmentEnv",
+      duration: 28800000 // In miliseconds => 8 Hours
     }
   }
 }

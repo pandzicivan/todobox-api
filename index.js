@@ -14,6 +14,9 @@ const setupSessions = () => {
     secret: settings.user.sessions.secretKey,
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      maxAge: settings.user.sessions.duration,
+    },
   }));
 };
 

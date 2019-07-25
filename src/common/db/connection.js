@@ -11,7 +11,7 @@ class Database {
     this.db = db.createPool(this.dbSettings);
   }
 
-  getConnection() {
+  async getConnection() {
     return this.db.getConnection();
   }
 }
