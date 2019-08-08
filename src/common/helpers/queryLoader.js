@@ -6,7 +6,7 @@ class QueryLoader {
   }
 
   load(name) {
-    let query = fs.readFileSync(`${this.path}/${name}.sql`).toString();
+    const query = fs.readFileSync(`${this.path}/${name}.sql`).toString();
     return query.replace(/\s\s+/g, ' ');
   }
 }
