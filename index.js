@@ -5,6 +5,7 @@ const cache = require('./src/common/cache/cache');
 const settings = require('./settings');
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
+const cors = require('cors');
 
 const app = express();
 
@@ -28,6 +29,7 @@ const setRouter = () => {
 const init = () => {
   const port = settings.server.port;
   app.use(bodyParser.json());
+  app.use(cors());
   db.init();
   setupSessions();
   setRouter();

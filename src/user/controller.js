@@ -7,7 +7,6 @@ class UserController {
       firstName,
       lastName,
       email,
-      username,
       password,
     } = req.body;
     try {
@@ -15,7 +14,6 @@ class UserController {
         firstName,
         lastName,
         email,
-        username,
         password: bcrypt.hashSync(password, 10),
       });
       res.json(result);

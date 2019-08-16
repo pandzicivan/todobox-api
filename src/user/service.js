@@ -17,7 +17,6 @@ class UserService {
       firstName,
       lastName,
       email,
-      username,
       password,
     } = payload;
 
@@ -27,7 +26,6 @@ class UserService {
         firstName,
         lastName,
         email,
-        username,
         password,
       ]);
       return res;
