@@ -1,5 +1,3 @@
-USE todoer;
-
 SELECT
   u.first_name,
   u.last_name,

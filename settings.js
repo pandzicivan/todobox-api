@@ -9,6 +9,8 @@ const settings = {
     connectTimeout: 3000,
     host: 'db',
     multipleStatements: true,
+    database: 'todoer',
+    debug: false,
   },
   cache: {
     host: 'redis',

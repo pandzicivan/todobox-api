@@ -53,13 +53,13 @@ class UserService {
         email,
       ]);
 
-      if (res[1].length < 1) {
+      if (res.length < 1) {
         throw new Error('USER DOES NOT EXIST');
       }
 
-      passwordMatch = await bcrypt.compare(password, res[1][0].password);
+      passwordMatch = await bcrypt.compare(password, res[0].password);
       if (passwordMatch) {
-        return res;
+        return res[0];
       } else {
         throw new Error('CREDENTIALS DON`T MATCH');
       }
