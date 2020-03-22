@@ -15,19 +15,11 @@ CREATE TABLE task(
   id INT NOT NULL AUTO_INCREMENT,
   title VARCHAR(255) NOT NULL,
   description TEXT,
-  username VARCHAR(255) NOT NULL,
+  user_id INT NOT NULL,
   date DATETIME NOT NULL,
   alarm DATETIME NOT NULL,
-  PRIMARY KEY (id)
-);
-
-CREATE TABLE user_task(
-  id INT NOT NULL AUTO_INCREMENT,
-  user_id INT NOT NULL,
-  task_id INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES user(id),
-  FOREIGN KEY (task_id) REFERENCES task(id)
 );
 
 CREATE TABLE category(
