@@ -19,7 +19,7 @@ CREATE TABLE task(
   date DATETIME NOT NULL,
   alarm DATETIME NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (user_id) REFERENCES user(id),
+  FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 CREATE TABLE category(

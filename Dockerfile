@@ -1,3 +1,3 @@
-FROM node:10.16.0
+FROM node:12.13.0
 WORKDIR /home/source
 COPY . .

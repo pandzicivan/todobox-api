@@ -1,4 +1,5 @@
 const fs = require('fs');
+const omit = require('lodash/omit');
 const minimist = require('minimist');
 const db = require('mariadb');
 const settings = require('../settings');
@@ -16,15 +17,16 @@ const migrate = () => {
 };
 
 const executeMigration = async (file) => {
-  const dbSettings = settings.db;
+  const dbSettings = omit(settings.db, 'database');
   const connection = await db.createConnection(dbSettings);
   try {
     await connection.query(file.toString());
   } catch (e) {
     console.log(e);
+  } finally {
+    if (connection) connection.end();
+    process.exit(0);
   }
-  await connection.end();
-  process.exit();
 };
 
 migrate();
