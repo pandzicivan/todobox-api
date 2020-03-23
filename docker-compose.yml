@@ -7,8 +7,6 @@ services:
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=Lin08Uxs
-    networks:
-      - backend
   pma:
     image: phpmyadmin/phpmyadmin:latest
     container_name: todoer_pma
@@ -19,8 +17,6 @@ services:
       - PMA_PASSWORD=Lin08Uxs
       - PMA_PORT=3306
       - PMA_HOST=db
-    networks:
-      - backend
   node:
     build: .
     container_name: todoer_node
@@ -30,17 +26,9 @@ services:
       - ./:/home/source
     depends_on:
       - db
-    networks:
-      - backend
     command: npm run local
   redis:
     container_name: 'todoer_redis'
     image: redis:latest
     ports:
       - "6379:6379"
-    networks:
-      - backend
-
-networks:
-  backend:
-    driver: bridge

@@ -1,24 +1,27 @@
+const config = require('./config');
+
 const settings = {
+  env: config.env,
   server: {
-    port: 8001,
+    port: config.appPort,
   },
   db: {
     port: 3306,
-    user: 'root',
-    password: 'Lin08Uxs',
+    user: config.dbUser,
+    password: config.dbPassword,
     connectTimeout: 3000,
-    host: 'db',
+    host: config.dbHost,
     multipleStatements: true,
-    database: 'todoer',
+    database: config.dbName,
     debug: false,
   },
   cache: {
-    host: 'redis',
-    port: 6379,
+    host: config.redisHost,
+    port: config.redisPort,
   },
   user: {
     sessions: {
-      secretKey: 'forDevelopmentEnv',
+      secretKey: config.sessionSecretKey,
       duration: 28800000, // In miliseconds => 8 Hours
     },
   },
