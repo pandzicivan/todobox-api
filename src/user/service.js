@@ -9,7 +9,7 @@ const query = new QueryLoader(queryDirPath);
 class UserService {
   constructor() {
     this.queries = {};
-    this._loadQueries();
+    this.loadQueries();
   }
 
   async register(payload) {
@@ -70,9 +70,31 @@ class UserService {
     }
   }
 
-  _loadQueries() {
+  async getUserById(id) {
+    let conn;
+
+    try {
+      conn = await db.getConnection();
+      res = await conn.query(this.queries.selectUserById, [
+        id,
+      ]);
+
+      if (res.length < 1) {
+        throw new Error('USER DOES NOT EXIST');
+      }
+
+      return res[0];
+    } catch (err) {
+      throw new Error(err);
+    } finally {
+      if (conn) conn.end();
+    }
+  }
+
+  loadQueries() {
     this.queries.insertUser = query.load('insertUser');
     this.queries.selectUser = query.load('selectUser');
+    this.queries.selectUserById = query.load('selectUserById');
   }
 }
 

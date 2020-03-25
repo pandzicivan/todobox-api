@@ -4,6 +4,37 @@ const router = express.Router({// eslint-disable-line new-cap
   mergeParams: true,
 });
 
+
+/**
+ * @swagger
+ * /users/login:
+ *   post:
+ *     tags: [
+ *       "User"
+ *     ]
+ *     summary: Login user
+ *     description: Login existing user
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: email
+ *         description: Users's email
+ *         in: body
+ *         required: true
+ *         type: string
+ *       - name: password
+ *         description: Users's password
+ *         in: body
+ *         required: true
+ *         type: string
+ *     responses:
+ *       200:
+ *         description: User logged in
+ *       401:
+ *         description: Unathorized
+ *       400:
+ *         description: General error
+ */
 router.post('/login', (req, res) => {
   controller.login(req, res);
 });
