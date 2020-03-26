@@ -75,10 +75,9 @@ class UserService {
 
     try {
       conn = await db.getConnection();
-      res = await conn.query(this.queries.selectUserById, [
+      const res = await conn.query(this.queries.selectUserById, [
         id,
       ]);
-
       if (res.length < 1) {
         throw new Error('USER DOES NOT EXIST');
       }
