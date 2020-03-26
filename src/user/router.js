@@ -4,7 +4,6 @@ const router = express.Router({// eslint-disable-line new-cap
   mergeParams: true,
 });
 
-
 /**
  * @swagger
  * /users/login:
