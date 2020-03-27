@@ -57,8 +57,23 @@ class UserController {
         email,
         password: password,
       });
-      req.session.user = new User(result);
-      res.json(result);
+      const user = new User(result);
+      req.session.user = user;
+      res.json(user);
+    } catch (e) {
+      res.status(e.httpCode).send(e);
+    }
+  }
+
+  async loginCheck(req, res) {
+    const {
+      id,
+    } = req.session.user;
+
+    try {
+      const result = await userService.getUserById(id);
+      const user = new User(result);
+      res.json(user);
     } catch (e) {
       res.status(e.httpCode).send(e);
     }

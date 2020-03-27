@@ -3,6 +3,7 @@ const controller = require('./controller');
 const router = express.Router({// eslint-disable-line new-cap
   mergeParams: true,
 });
+const authenticate = require('../middleware/authenticate');
 
 /**
  * @swagger
@@ -78,6 +79,27 @@ router.post('/login', (req, res) => {
  */
 router.post('/register', (req, res) => {
   controller.register(req, res);
+});
+
+/**
+ * @swagger
+ * /users/login:
+ *   get:
+ *     tags: [
+ *       "User"
+ *     ]
+ *     summary: User login
+ *     description: Check user session
+ *     responses:
+ *       "200":
+ *         description: Successful login
+ *       "401":
+ *         description: Unathorized
+ *       "400":
+ *         description: General error
+ */
+router.get('/login', authenticate, (req, res) => {
+  controller.loginCheck(req, res);
 });
 
 module.exports = router;
