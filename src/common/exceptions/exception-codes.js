@@ -14,6 +14,11 @@ module.exports = {
     httpCode: 403,
     message: 'forbidden',
   },
+  USER_NOT_FOUND: {
+    code: 'USER_NOT_FOUND',
+    httpCode: 404,
+    message: 'user_not_found',
+  },
   EMPTY_DB_RESULT: {
     code: 'EMPTY_DB_RESULT',
     httpCode: 404,

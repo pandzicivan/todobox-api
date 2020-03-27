@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const userService = require('./service');
 const User = require('./model');
 const {validateSchema} = require('../utility/schema-validator');
-const {registerSchema} = require('./schema');
+const {registerSchema, loginSchema} = require('./schema');
 const Exception = require('../common/exceptions/model');
 
 class UserController {
@@ -36,8 +36,7 @@ class UserController {
       const response = new User(user);
       res.json(response);
     } catch (e) {
-      // TODO: Add proper error and log it
-      res.sendStatus(400);
+      res.status(e.httpCode).send(e);
     }
   }
 
@@ -46,6 +45,12 @@ class UserController {
       email,
       password,
     } = req.body;
+    const validatedPayload = validateSchema(loginSchema, req.body);
+    if (!validatedPayload.valid) {
+      const exception = new Exception('UNAUTHORIZED', validatedPayload.msg);
+      res.status(exception.httpCode).send(exception);
+      return;
+    }
 
     try {
       const result = await userService.login({
@@ -55,8 +60,7 @@ class UserController {
       req.session.user = new User(result);
       res.json(result);
     } catch (e) {
-      // TODO: Add proper error and log it
-      res.sendStatus(400);
+      res.status(e.httpCode).send(e);
     }
   }
 }
